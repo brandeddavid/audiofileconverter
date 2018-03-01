@@ -43,20 +43,23 @@ sox({
 var audioMetaData = require('audio-metadata'),
 fs = require('fs');
 
-fs.readdir('./tests', (err, files) => {
+fs.readdir('./tests/', (err, files) => {
   files.forEach(file => {
     //console.log(file);
     var oggData = fs.readFileSync('./tests/'+file);
     var metadata = audioMetaData.ogg(oggData);
 
-    if (metadata.swac_speak_gender == 'F'){
-      console.log(file + ' has a female voice')
+    if (metadata.swac_speak_gender == null){
+      console.log(file + ' voice is null')
     }
     else if(metadata.swac_speak_gender == 'M'){
       console.log(file + ' has a male voice')
     }
+    else if(metadata.swac_speak_gender == 'F'){
+      console.log(file + ' has a female voice')
+    }
     else{
-      console.log(file + ' has no voice')
+      //console.log(file + ' has no voice')
     }
 
   });
