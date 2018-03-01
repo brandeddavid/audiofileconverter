@@ -1,0 +1,16 @@
+{
+  "name": "conversiontest",
+  "version": "1.0.0",
+  "description": "Simple Conversion Test App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Mwangi",
+  "license": "ISC",
+  "dependencies": {
+    "audio-converter": "^1.0.13",
+    "fs": "0.0.1-security",
+    "sox.js": "^2.0.1"
+  }
+}
