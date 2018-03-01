@@ -1,3 +1,4 @@
+/*
 //Required Modules
 var audioConverter = require("audio-converter");
 
@@ -10,7 +11,7 @@ audioConverter("./wav/", "./mp3/",{
     console.log("Done!");
 });
 
-/*
+
 //.ogg to .wav Converter
 var testFolder = './ogg/';
 var fs = require('fs');
@@ -37,4 +38,34 @@ sox({
 	inputFile: './ogg/' + fileName,
 	outputFile: './wav/' + fileName.split('.')[0] + '.wav'
 })
+*/
+
+var audioMetaData = require('audio-metadata'),
+fs = require('fs');
+
+fs.readdir('./tests', (err, files) => {
+  files.forEach(file => {
+    //console.log(file);
+    var oggData = fs.readFileSync('./tests/'+file);
+    var metadata = audioMetaData.ogg(oggData);
+
+    if (metadata.swac_speak_gender == 'F'){
+      console.log(file + ' has a female voice')
+    }
+    else if(metadata.swac_speak_gender == 'M'){
+      console.log(file + ' has a male voice')
+    }
+    else{
+      console.log(file + ' has no voice')
+    }
+
+  });
+})
+
+/*
+var oggData = fs.readFileSync('yolk.ogg');
+var metadata = audioMetaData.ogg(oggData);
+
+
+console.log(metadata.swac_speak_gender);
 */
