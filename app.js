@@ -1,15 +1,17 @@
-/*
 //Required Modules
 var audioConverter = require("audio-converter");
 
-// COnversion with progress bar
-audioConverter("./waves/", "./mp3s/", '-m'{
-    progressBar: true
+// Conversion with progress bar
+//.wav to .mp3 Converter
+audioConverter("./wav/", "./mp3/",{
+    progressBar: true,
+    mp3Only: true
 }).then(function() {
     console.log("Done!");
 });
-*/
 
+/*
+//.ogg to .wav Converter
 var testFolder = './ogg/';
 var fs = require('fs');
 var sox = require('sox.js');
@@ -25,7 +27,8 @@ fs.readdir(testFolder, (err, files) => {
   });
 })
 
-/*
+
+
 var sox = require('sox.js');
 
 sox({
